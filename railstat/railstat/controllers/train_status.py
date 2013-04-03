@@ -6,6 +6,7 @@ import json
 
 from pylons import request, response, session, tmpl_context as c, url
 from pylons.controllers.util import abort, redirect
+from pylons import config
 
 from railstat.lib.base import BaseController, render
 
@@ -22,6 +23,7 @@ class TrainStatusController(BaseController):
                 Last location of the train, time at which arrived at the last location, expected time for next location.
         '''
         res_msg = ''
+        txtweb_app_id = config.get('txtweb_app_id')
         if request.params.has_key('txtweb-message'):
             txtweb_message = cgi.escape(request.params.get('txtweb-message'))
             if txtweb_message.__contains__(" "):
@@ -34,7 +36,7 @@ class TrainStatusController(BaseController):
                 train_start_date = ist_date
             user_train_date = train_start_date
         else:
-            help_msg = '<html><head><meta name="txtweb-appkey" content="app-id" /></head><body>Get latest update on your train running status. <br /> To use, SMS @railstat &lt;train number&gt; &lt;train departure date in the format yyyy-mm-dd&gt; to 92665 92665 <br />Eg: @railstat 12631 2012-06-25</body></html>'
+            help_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Get latest update on your train running status. <br /> To use, SMS @railstat &lt;train number&gt; &lt;train departure date in the format yyyy-mm-dd&gt; to 92665 92665 <br />Eg: @railstat 12631 2012-06-25</body></html>'% txtweb_app_id
             return help_msg
         main_page = urllib2.urlopen('http://trainenquiry.com',timeout=60)
         cookie_val = main_page.headers.get('Set-Cookie')
@@ -59,11 +61,11 @@ class TrainStatusController(BaseController):
                         ft = datetime.datetime.strptime(dept_time,'%Y-%m-%dT%H:%M:%S+05:30')
                         readable_time =  '%s:%s' % (ft.hour, ft.minute)
                         readable_date =  '%s-%s-%s' % (ft.day, ft.month, ft.year)
-                        tmp_msg = '<html><head><meta name="txtweb-appkey" content="app-id" /></head><body>Train(%s) is scheduled to start from %s at %s (%s)<br />Thanks to Railyatri.in</body></html>'%(train_number, dept_name, readable_time, readable_date)
+                        tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Train(%s) is scheduled to start from %s at %s (%s)<br />Thanks to Railyatri.in</body></html>'%(txtweb_app_id, train_number, dept_name, readable_time, readable_date)
                         res_msg = '%s%s'%(res_msg,tmp_msg)
                         break
             else:
-                tmp_msg = '<html><head><meta name="txtweb-appkey" content="app-id" /></head><body>Sorry, No information is available for this train. <br /> Please try again later! <br />Thanks to Railyatri.in</body></html>'
+                tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, No information is available for this train. <br /> Please try again later! <br />Thanks to Railyatri.in</body></html>'%txtweb_app_id
                 res_msg = '%s%s'%(res_msg,tmp_msg)
             return res_msg
         last_location = json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))]['running_info']['last_stn']['station_name']
@@ -74,7 +76,7 @@ class TrainStatusController(BaseController):
            
         next_station_code = ''
         if not json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))].has_key('station_updates'):
-            tmp_msg = '<html><head><meta name="txtweb-appkey" content="app-id" /></head><body>Sorry, No information is available for this train. <br /> Please try again later! <br />Thanks to Railyatri.in</body></html>'
+            tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, No information is available for this train. <br /> Please try again later! <br />Thanks to Railyatri.in</body></html>'%txtweb_app_id
             res_msg = '%s%s'%(res_msg,tmp_msg)
             return res_msg
         station_updates = json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))]['station_updates']
@@ -129,7 +131,7 @@ class TrainStatusController(BaseController):
             eta_time =  '%s:%s' % (ns_eta.hour, ns_eta.minute)
             eta_date =  '%s-%s-%s' % (ns_eta.day, ns_eta.month, ns_eta.year)
             msg = msg+"<br /><br />Next Station update:<br /><br />Station Name: %s<br />Scheduled: %s(%s)<br />Expected: %s(%s)" % (next_station_name, sta_time, sta_date, eta_time, eta_date)
-        tmp_msg = '<html><head><meta name="txtweb-appkey" content="app-id" /></head><body>Train running status update - %s : %s' % (train_number, user_train_date)
+        tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Train running status update - %s : %s' % (txtweb_app_id, train_number, user_train_date)
         tmp_msg = "%s%s"%(tmp_msg,msg+"<br />Thanks to Railyatri.in</body></html>")
         res_msg = '%s%s'%(res_msg,tmp_msg)
         return res_msg
