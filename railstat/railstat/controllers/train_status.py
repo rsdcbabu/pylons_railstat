@@ -2,7 +2,6 @@ import logging
 import cgi
 import urllib,urllib2
 import datetime,time
-from random import random
 import json
 
 from pylons import request, response, session, tmpl_context as c, url
@@ -37,9 +36,7 @@ class TrainStatusController(BaseController):
         else:
             help_msg = '<html><head><meta name="txtweb-appkey" content="app-id" /></head><body>Get latest update on your train running status. <br /> To use, SMS @railstat &lt;train number&gt; &lt;train departure date in the format yyyy-mm-dd&gt; to 92665 92665 <br />Eg: @railstat 12631 2012-06-25</body></html>'
             return help_msg
-        random_number1 = random().__str__()[2:]
-        random_number2 = random().__str__()[2:]
-        main_page = urllib2.urlopen('http://trainenquiry.com')
+        main_page = urllib2.urlopen('http://trainenquiry.com',timeout=60)
         cookie_val = main_page.headers.get('Set-Cookie')
         json_train_schedule = self._get_train_schedule(train_number,train_start_date,cookie_val)
         train_station_info = {}
@@ -137,7 +134,7 @@ class TrainStatusController(BaseController):
         res_msg = '%s%s'%(res_msg,tmp_msg)
         return res_msg
 
-    def _get_train_schedule(self,train_number,train_start_data,cookie_val):
+    def _get_train_schedule(self,train_number,train_start_date,cookie_val):
         '''
             Fetches Train Schedule by using train number and train departure date
         '''
@@ -150,12 +147,12 @@ class TrainStatusController(BaseController):
         sc_url_req = urllib2.Request(train_schedule_url)
         sc_url_req.add_header('Cookie',cookie_val) 
         sc_url_req.add_header('Referer','http://trainenquiry.com/CurrentRunningTrain.aspx') 
-        s = urllib2.urlopen(sc_url_req,payload_data)
+        s = urllib2.urlopen(sc_url_req,payload_data,timeout=60)
         train_schedule = s.read()
-        json_train_schedule = json.loads(train_schedule.replace('jQuery%s('%random_number1, '').replace(')',''))
+        json_train_schedule = json.loads(train_schedule)
         return json_train_schedule
 
-    def _get_train_location_info(self,train_number,train_start_data,all_station_codes,cookie_val):
+    def _get_train_location_info(self,train_number,train_start_date,all_station_codes,cookie_val):
         '''
             Fetches train location information which includes scheduled and actual departure,arrival times for each station
         '''
@@ -169,7 +166,7 @@ class TrainStatusController(BaseController):
         sc_url_req = urllib2.Request(train_schedule_url)
         sc_url_req.add_header('Cookie',cookie_val) 
         sc_url_req.add_header('Referer','http://trainenquiry.com/CurrentRunningTrain.aspx') 
-        s = urllib2.urlopen(sc_url_req,payload_data)
+        s = urllib2.urlopen(sc_url_req,payload_data,timeout=60)
         status_content = s.read()
-        json_content = json.loads(status_content.replace('jQuery%s('%random_number1, '').replace(')',''))
+        json_content = json.loads(status_content)
         return json_content
