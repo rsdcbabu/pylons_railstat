@@ -1,0 +1,23 @@
+﻿Railstat(Pylons framework) deployment steps:
+
+
+1. Install Pylons:
+apt-get install python-setuptools
+easy_install -U Pylons
+2. Install Apache2 and wsgi
+apt-get install apache2 libapache2-mod-wsgi
+3. cd /opt
+4. Clone the codebase:
+ git clone http://www.github.com/rsdcbabu/pylons_railstat.git
+5. ln -sf /opt/pylons_railstat/deploy/apache2/sites-enabled/railstat_mod_wsgi /etc/apache2/sites-enabled/.
+6. In the following statement, use correct python version as per the environment.(It can be identified by running “python --version” in the terminal)
+ln -sf /opt/pylons_railstat/deploy/pylons/railstat.egg-link /usr/local/lib/python2.7/dist-packages/.
+7. ln -sf /opt/pylons_railstat/deploy/wsgi/railstat.wsgi /opt/pylons_railstat/railstat/.
+8. Create log dir:
+mkdir /opt/pylons_railstat/railstat/log
+chown www-data:www-data /opt/pylons_railstat/railstat/log -R
+9. Edit txtweb_app_id variable in /opt/pylons_railstat/railstat/production.ini
+10. Restart apache2:
+service apache2 restart
+
+At this point, http://localhost/trainstatus should display railstat help message.
