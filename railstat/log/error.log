@@ -1,0 +1,423 @@
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1] mod_wsgi (pid=3406): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1] mod_wsgi (pid=3406): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 13, in <module>
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 17:48:25 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1] mod_wsgi (pid=3568): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1] mod_wsgi (pid=3568): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 13, in <module>
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 17:49:51 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1] mod_wsgi (pid=3567): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1] mod_wsgi (pid=3567): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 13, in <module>
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 17:49:55 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1] mod_wsgi (pid=3740): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1] mod_wsgi (pid=3740): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 14, in <module>
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 17:52:31 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1] mod_wsgi (pid=3905): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1] mod_wsgi (pid=3905): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 14, in <module>
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 17:54:23 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4024): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4024): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 14, in <module>
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 17:55:06 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4148): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4148): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 14, in <module>
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 17:57:13 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4253): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4253): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 14, in <module>
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 17:58:07 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4391): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4391): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 13, in <module>
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 18:00:11 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat1
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4535): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4535): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 13, in <module>
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 18:00:48 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4650): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4650): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 13, in <module>
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 18:01:25 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4750): Target WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi' cannot be loaded as Python module.
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4750): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/home/deepak/pylons_railstat/railstat/railstat.wsgi", line 13, in <module>
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     application = loadapp('config:%s' % configFile)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 247, in loadapp
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     return loadobj(APP, uri, name=name, **kw)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 271, in loadobj
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 320, in _loadconfig
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 454, in get_context
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     section)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 476, in _context_from_use
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     object_type, name=use, global_conf=global_conf)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 406, in get_context
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 296, in loadcontext
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     global_conf=global_conf)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 328, in _loadegg
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     return loader.get_context(object_type, name, global_conf)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 620, in get_context
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     object_type, name=name)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/PasteDeploy-1.5.0-py2.7.egg/paste/deploy/loadwsgi.py", line 640, in find_egg_entry_point
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     pkg_resources.require(self.spec)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 654, in require
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     needed = self.resolve(parse_requirements(requirements))
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/pkg_resources.py", line 552, in resolve
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1]     raise DistributionNotFound(req)
+[Wed Apr 03 18:01:51 2013] [error] [client 127.0.0.1] DistributionNotFound: railstat
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1] mod_wsgi (pid=4915): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Paste-1.7.5.1-py2.7.egg/paste/cascade.py", line 130, in __call__
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1]     return self.apps[-1](environ, start_response)
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Paste-1.7.5.1-py2.7.egg/paste/registry.py", line 379, in __call__
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1]     app_iter = self.application(environ, start_response)
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Pylons-1.0.1rc1-py2.7.egg/pylons/middleware.py", line 164, in __call__
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1]     self.app, environ, catch_exc_info=True)
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Pylons-1.0.1rc1-py2.7.egg/pylons/util.py", line 50, in call_wsgi_application
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1]     app_iter = application(environ, start_response)
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/WebError-0.10.3-py2.7.egg/weberror/evalexception.py", line 226, in __call__
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1]     "The EvalException middleware is not usable in a "
+[Wed Apr 03 18:03:37 2013] [error] [client 127.0.0.1] AssertionError: The EvalException middleware is not usable in a multi-process environment
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1] mod_wsgi (pid=5044): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Paste-1.7.5.1-py2.7.egg/paste/cascade.py", line 130, in __call__
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1]     return self.apps[-1](environ, start_response)
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Paste-1.7.5.1-py2.7.egg/paste/registry.py", line 379, in __call__
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1]     app_iter = self.application(environ, start_response)
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Pylons-1.0.1rc1-py2.7.egg/pylons/middleware.py", line 164, in __call__
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1]     self.app, environ, catch_exc_info=True)
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Pylons-1.0.1rc1-py2.7.egg/pylons/util.py", line 50, in call_wsgi_application
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1]     app_iter = application(environ, start_response)
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/WebError-0.10.3-py2.7.egg/weberror/evalexception.py", line 226, in __call__
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1]     "The EvalException middleware is not usable in a "
+[Wed Apr 03 18:03:50 2013] [error] [client 127.0.0.1] AssertionError: The EvalException middleware is not usable in a multi-process environment
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1] mod_wsgi (pid=5200): Exception occurred processing WSGI script '/home/deepak/pylons_railstat/railstat/railstat.wsgi'.
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Paste-1.7.5.1-py2.7.egg/paste/cascade.py", line 130, in __call__
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1]     return self.apps[-1](environ, start_response)
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Paste-1.7.5.1-py2.7.egg/paste/registry.py", line 379, in __call__
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1]     app_iter = self.application(environ, start_response)
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Pylons-1.0.1rc1-py2.7.egg/pylons/middleware.py", line 164, in __call__
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1]     self.app, environ, catch_exc_info=True)
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/Pylons-1.0.1rc1-py2.7.egg/pylons/util.py", line 50, in call_wsgi_application
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1]     app_iter = application(environ, start_response)
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1]   File "/usr/local/lib/python2.7/dist-packages/WebError-0.10.3-py2.7.egg/weberror/evalexception.py", line 226, in __call__
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1]     "The EvalException middleware is not usable in a "
+[Wed Apr 03 18:05:03 2013] [error] [client 127.0.0.1] AssertionError: The EvalException middleware is not usable in a multi-process environment

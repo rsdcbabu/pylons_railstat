@@ -1,0 +1,14 @@
+<VirtualHost *>
+    # Logfiles
+    ErrorLog  /home/deepak/pylons_railstat/railstat/log/error.log
+    CustomLog /home/deepak/pylons_railstat/railstat/log/access.log combined
+
+    # Setup mod_wsgi
+    WSGIScriptAlias / /home/deepak/pylons_railstat/railstat/railstat.wsgi
+
+    <Directory /home/deepak/pylons_railstat/railstat>
+    Order deny,allow
+    Allow from all
+    </Directory>
+
+</VirtualHost>

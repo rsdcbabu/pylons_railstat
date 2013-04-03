@@ -1,0 +1,3 @@
+include railstat/config/deployment.ini_tmpl
+recursive-include railstat/public *
+recursive-include railstat/templates *
