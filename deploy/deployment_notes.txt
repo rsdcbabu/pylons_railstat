@@ -1,5 +1,6 @@
-﻿Railstat(Pylons framework) deployment steps:
-
+﻿Railstat(Pylons framework) deployment steps
+-------------------------------------------
+Author: Deepak Chand Babu <rsdcbabu@gmail.com>
 
 1. Install Pylons:
 apt-get install python-setuptools
