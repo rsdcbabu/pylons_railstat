@@ -24,7 +24,7 @@ class TrainStatusController(BaseController):
         '''
         res_msg = ''
         txtweb_app_id = config.get('txtweb_app_id')
-        if request.params.has_key('txtweb-message'):
+        if request.params.has_key('txtweb-message') and request.params.get('txtweb-message').strip():
             txtweb_message = cgi.escape(request.params.get('txtweb-message'))
             if txtweb_message.__contains__(" "):
                 train_number,train_start_date = txtweb_message.split()
