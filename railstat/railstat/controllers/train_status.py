@@ -3,6 +3,7 @@ import cgi
 import urllib,urllib2
 import datetime,time
 import json
+import re
 
 from pylons import request, response, session, tmpl_context as c, url
 from pylons.controllers.util import abort, redirect
@@ -40,6 +41,7 @@ class TrainStatusController(BaseController):
             return help_msg
         main_page = urllib2.urlopen('http://trainenquiry.com',timeout=60)
         cookie_val = main_page.headers.get('Set-Cookie')
+        cookie_val = re.sub('.*?(ASP.*?;).*','\\1',cookie_val)
         json_train_schedule = self._get_train_schedule(train_number,train_start_date,cookie_val)
         train_station_info = {}
         all_station_codes = ''
@@ -140,6 +142,7 @@ class TrainStatusController(BaseController):
         '''
             Fetches Train Schedule by using train number and train departure date
         '''
+        cookie_val = cookie_val + ' __utma=177604064.1493553162.1371413536.1371413536.1371413536.1; __utmb=177604064.25.10.1371413536; __utmc=177604064; __utmz=177604064.1371413536.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __gads=ID=ead3b372002b189d:T=1371413537:S=ALNI_MbQm_aBLVkV4zQOopVCEk8iIc6qOQ; __utmv=177604064.|1=RunningStatus=(Yesterday)=1; OX_plg=qt|wmp|pm'
         train_schedule_url = 'http://www.trainenquiry.com/RailYatri.ashx'
         payload_data = {}
         payload_data['RequestType'] = 'Schedule'
@@ -148,6 +151,7 @@ class TrainStatusController(BaseController):
         payload_data = urllib.urlencode(payload_data)
         sc_url_req = urllib2.Request(train_schedule_url)
         sc_url_req.add_header('Cookie',cookie_val) 
+        sc_url_req.add_header('Host','www.trainenquiry.com') 
         sc_url_req.add_header('Referer','http://trainenquiry.com/CurrentRunningTrain.aspx') 
         s = urllib2.urlopen(sc_url_req,payload_data,timeout=60)
         train_schedule = s.read()
@@ -158,6 +162,7 @@ class TrainStatusController(BaseController):
         '''
             Fetches train location information which includes scheduled and actual departure,arrival times for each station
         '''
+        cookie_val = cookie_val + ' __utma=177604064.1493553162.1371413536.1371413536.1371413536.1; __utmb=177604064.25.10.1371413536; __utmc=177604064; __utmz=177604064.1371413536.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __gads=ID=ead3b372002b189d:T=1371413537:S=ALNI_MbQm_aBLVkV4zQOopVCEk8iIc6qOQ; __utmv=177604064.|1=RunningStatus=(Yesterday)=1; OX_plg=qt|wmp|pm'
         train_schedule_url = 'http://www.trainenquiry.com/RailYatri.ashx'
         payload_data = {}
         payload_data['RequestType'] = 'Location'
@@ -167,7 +172,8 @@ class TrainStatusController(BaseController):
         payload_data = urllib.urlencode(payload_data)
         sc_url_req = urllib2.Request(train_schedule_url)
         sc_url_req.add_header('Cookie',cookie_val) 
-        sc_url_req.add_header('Referer','http://trainenquiry.com/CurrentRunningTrain.aspx') 
+        sc_url_req.add_header('Host','www.trainenquiry.com') 
+        sc_url_req.add_header('Referer','http://trainenquiry.com/TrainStatus.aspx') 
         s = urllib2.urlopen(sc_url_req,payload_data,timeout=60)
         status_content = s.read()
         json_content = json.loads(status_content)
