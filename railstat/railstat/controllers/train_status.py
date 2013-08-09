@@ -132,7 +132,8 @@ class TrainStatusController(BaseController):
             sta_date =  '%s-%s-%s' % (ns_sta.day, ns_sta.month, ns_sta.year)
             eta_time =  '%s:%s' % (ns_eta.hour, ns_eta.minute)
             eta_date =  '%s-%s-%s' % (ns_eta.day, ns_eta.month, ns_eta.year)
-            msg = msg+"<br /><br />Next Station update:<br /><br />Station Name: %s<br />Scheduled: %s(%s)<br />Expected: %s(%s)" % (next_station_name, sta_time, sta_date, eta_time, eta_date)
+            ds_rem = train_station_info[next_station_code]['distance_from_source'] - train_station_info[last_station_code]['distance_from_source']
+            msg = msg+"<br /><br />Next Station update:<br /><br />Station Name: %s<br />Scheduled: %s(%s)<br />Expected: %s(%s)<br />-- %s KM(s) to go --" % (next_station_name, sta_time, sta_date, eta_time, eta_date, ds_rem)
         tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Train running status update - %s : %s' % (txtweb_app_id, train_number, user_train_date)
         tmp_msg = "%s%s"%(tmp_msg,msg+"<br />Thanks to Railyatri.in</body></html>")
         res_msg = '%s%s'%(res_msg,tmp_msg)
