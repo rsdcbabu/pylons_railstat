@@ -43,14 +43,20 @@ class TrainStatusController(BaseController):
         cookie_val = main_page.headers.get('Set-Cookie')
         cookie_val = re.sub('.*?(ASP.*?;).*','\\1',cookie_val)
         json_train_schedule = self._get_train_schedule(train_number,train_start_date,cookie_val)
+        if not json_train_schedule:
+            help_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>The information is currently unavailable. Please try after sometime.</body></html>'% txtweb_app_id
+            return help_msg
         train_station_info = {}
         all_station_codes = ''
         for each_schedule in json_train_schedule:
-            if each_schedule['station_code'].strip() and each_schedule['stop']:
+            if each_schedule['station_code'].strip(): #and each_schedule['stop']
                 train_station_info[each_schedule['station_code']] = each_schedule
             all_station_codes = '%s,%s'%(all_station_codes,each_schedule['station_code'])
         all_station_codes = all_station_codes[1:]
-        json_content = self._get_train_location_info(train_number,train_start_date,all_station_codes,cookie_val) 
+        json_content = self._get_train_location_info(train_number,train_start_date,all_station_codes,cookie_val)
+        if not json_content:
+            help_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>The information is currently unavailable. Please try after sometime.</body></html>'% txtweb_app_id
+            return help_msg
         if json_content.has_key('keys'):
             json_key = json_content['keys']
             train_start_date = json_key[0].replace('%s_'%train_number,'')
@@ -75,7 +81,7 @@ class TrainStatusController(BaseController):
         last_status = json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))]['running_info']['last_stn']['status']
         last_time = json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))]['running_info']['last_stn']['time']
         current_last_station = last_location_code
-           
+
         next_station_code = ''
         if not json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))].has_key('station_updates'):
             tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, No information is available for this train. <br /> Please try again later! <br />Thanks to Railyatri.in</body></html>'%txtweb_app_id
@@ -91,12 +97,13 @@ class TrainStatusController(BaseController):
                     last_location_sta = each_station_schedule['sta']
                 else:
                     last_location_sta = each_station_schedule['std']
-                ft = datetime.datetime.strptime(last_time,'%Y-%m-%dT%H:%M:%S+05:30')
-                ft2 = datetime.datetime.strptime(last_location_sta,'%Y-%m-%dT%H:%M:%S+05:30')
-                if ft2 > ft:
-                    delay_mins = -((ft2 - ft).seconds/60)
-                else:
-                    delay_mins = (ft - ft2).seconds/60
+                if last_time and last_location_sta:
+                    ft = datetime.datetime.strptime(last_time,'%Y-%m-%dT%H:%M:%S+05:30')
+                    ft2 = datetime.datetime.strptime(last_location_sta,'%Y-%m-%dT%H:%M:%S+05:30')
+                    if ft2 > ft:
+                        delay_mins = -((ft2 - ft).seconds/60)
+                    else:
+                        delay_mins = (ft - ft2).seconds/60
                 continue
             if not each_station_schedule['stop']:
                 continue
@@ -118,11 +125,13 @@ class TrainStatusController(BaseController):
         if next_station_code != 'ENDOFTRIP' and delay_mins == '':
             delay_mins = json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))]['delay_mins']
             delay_mins = int(delay_mins)
-            
+
         ft = datetime.datetime.strptime(last_time,'%Y-%m-%dT%H:%M:%S+05:30')
         readable_time =  '%s:%s' % (ft.hour, ft.minute)
         readable_date =  '%s-%s-%s' % (ft.day, ft.month, ft.year)
-        msg = '<br /><br />Last Station: %s<br />Status: %s at %s on %s<br />Delay by: %s mins' % (last_location, last_status, readable_time, readable_date, delay_mins)
+        msg = '<br /><br />Last Station: %s<br />Status: %s at %s on %s<br />' % (last_location, last_status, readable_time, readable_date)
+        if delay_mins:
+            msg = '%sDelay by: %s mins' % (msg, delay_mins)
         if next_station_code and next_station_code != 'ENDOFTRIP':
             next_station_name = train_station_info[next_station_code]['station_name']
             ns_sta = train_station_info[next_station_code]['sta']
@@ -151,9 +160,9 @@ class TrainStatusController(BaseController):
         payload_data['train_number_variable']  = train_number
         payload_data = urllib.urlencode(payload_data)
         sc_url_req = urllib2.Request(train_schedule_url)
-        sc_url_req.add_header('Cookie',cookie_val) 
-        sc_url_req.add_header('Host','www.trainenquiry.com') 
-        sc_url_req.add_header('Referer','http://trainenquiry.com/CurrentRunningTrain.aspx') 
+        sc_url_req.add_header('Cookie',cookie_val)
+        sc_url_req.add_header('Host','www.trainenquiry.com')
+        sc_url_req.add_header('Referer','http://trainenquiry.com/CurrentRunningTrain.aspx')
         s = urllib2.urlopen(sc_url_req,payload_data,timeout=60)
         train_schedule = s.read()
         json_train_schedule = json.loads(train_schedule)
@@ -172,9 +181,9 @@ class TrainStatusController(BaseController):
         payload_data['t']  = train_number
         payload_data = urllib.urlencode(payload_data)
         sc_url_req = urllib2.Request(train_schedule_url)
-        sc_url_req.add_header('Cookie',cookie_val) 
-        sc_url_req.add_header('Host','www.trainenquiry.com') 
-        sc_url_req.add_header('Referer','http://trainenquiry.com/TrainStatus.aspx') 
+        sc_url_req.add_header('Cookie',cookie_val)
+        sc_url_req.add_header('Host','www.trainenquiry.com')
+        sc_url_req.add_header('Referer','http://trainenquiry.com/TrainStatus.aspx')
         s = urllib2.urlopen(sc_url_req,payload_data,timeout=60)
         status_content = s.read()
         json_content = json.loads(status_content)
