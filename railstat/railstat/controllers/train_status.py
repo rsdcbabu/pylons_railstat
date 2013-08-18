@@ -27,8 +27,10 @@ class TrainStatusController(BaseController):
         txtweb_app_id = config.get('txtweb_app_id')
         if request.params.has_key('txtweb-message') and request.params.get('txtweb-message').strip():
             txtweb_message = cgi.escape(request.params.get('txtweb-message'))
+            has_user_provided_date = False
             if txtweb_message.__contains__(" "):
                 train_number,train_start_date = txtweb_message.split()
+                has_user_provided_date = True
             else:
                 train_number = txtweb_message
                 gmt_datetime = datetime.datetime.fromtimestamp(time.mktime(time.gmtime()))
@@ -43,9 +45,6 @@ class TrainStatusController(BaseController):
         cookie_val = main_page.headers.get('Set-Cookie')
         cookie_val = re.sub('.*?(ASP.*?;).*','\\1',cookie_val)
         json_train_schedule = self._get_train_schedule(train_number,train_start_date,cookie_val)
-        if not json_train_schedule:
-            help_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>The information is currently unavailable. Please try after sometime.</body></html>'% txtweb_app_id
-            return help_msg
         train_station_info = {}
         all_station_codes = ''
         for each_schedule in json_train_schedule:
@@ -54,9 +53,6 @@ class TrainStatusController(BaseController):
             all_station_codes = '%s,%s'%(all_station_codes,each_schedule['station_code'])
         all_station_codes = all_station_codes[1:]
         json_content = self._get_train_location_info(train_number,train_start_date,all_station_codes,cookie_val)
-        if not json_content:
-            help_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>The information is currently unavailable. Please try after sometime.</body></html>'% txtweb_app_id
-            return help_msg
         if json_content.has_key('keys'):
             json_key = json_content['keys']
             train_start_date = json_key[0].replace('%s_'%train_number,'')
@@ -73,7 +69,10 @@ class TrainStatusController(BaseController):
                         res_msg = '%s%s'%(res_msg,tmp_msg)
                         break
             else:
-                tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, No information is available for this train. <br /> Please try again later! <br />Thanks to Railyatri.in</body></html>'%txtweb_app_id
+                if not has_user_provided_date:
+                    tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, No information is available for this train. <br /> Please try again by adding train departure date in the format yyyy-mm-dd <br />Eg: @railstat 12631 2012-06-25 <br />Thanks to Railyatri.in</body></html>'%txtweb_app_id
+                else:
+                    tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, No information is available for this train. <br /> Please try again later! <br />Thanks to Railyatri.in</body></html>'%txtweb_app_id
                 res_msg = '%s%s'%(res_msg,tmp_msg)
             return res_msg
         last_location = json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))]['running_info']['last_stn']['station_name']
@@ -84,7 +83,10 @@ class TrainStatusController(BaseController):
 
         next_station_code = ''
         if not json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))].has_key('station_updates'):
-            tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, No information is available for this train. <br /> Please try again later! <br />Thanks to Railyatri.in</body></html>'%txtweb_app_id
+            if not has_user_provided_date:
+                tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, No information is available for this train. <br /> Please try again by adding train departure date in the format yyyy-mm-dd <br />Eg: @railstat 12631 2012-06-25 <br />Thanks to Railyatri.in</body></html>'%txtweb_app_id
+            else:
+                tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, No information is available for this train. <br /> Please try again later! <br />Thanks to Railyatri.in</body></html>'%txtweb_app_id
             res_msg = '%s%s'%(res_msg,tmp_msg)
             return res_msg
         station_updates = json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))]['station_updates']
