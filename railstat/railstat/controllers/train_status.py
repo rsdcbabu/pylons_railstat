@@ -37,7 +37,7 @@ class TrainStatusController(BaseController):
                 train_start_date = ist_date
             user_train_date = train_start_date
         else:
-            help_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Get latest update on your train running status. <br /> To use, SMS @railstat &lt;train number&gt; &lt;train departure date in the format yyyy-mm-dd&gt; to 92665 92665 <br />Eg: @railstat 12631 2012-06-25</body></html>'% txtweb_app_id
+            help_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Get latest update on your train running status. <br /> To use, SMS <txtWeb class="txtweb-number">@railstat &lt;train number&gt; &lt;train departure date in the format yyyy-mm-dd&gt;</txtWeb> <br />Eg: @railstat 12631 2012-06-25</body></html>'% txtweb_app_id
             return help_msg
         main_page = urllib2.urlopen('http://trainenquiry.com',timeout=60)
         cookie_val = main_page.headers.get('Set-Cookie')
