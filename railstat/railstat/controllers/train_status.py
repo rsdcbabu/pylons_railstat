@@ -53,6 +53,13 @@ class TrainStatusController(BaseController):
             all_station_codes = '%s,%s'%(all_station_codes,each_schedule['station_code'])
         all_station_codes = all_station_codes[1:]
         json_content = self._get_train_location_info(train_number,train_start_date,all_station_codes,cookie_val)
+        try:
+            if 'keys' in json_content:
+                tmp_start_date = json_content['keys'][0].replace('%s_'%train_number, '')
+            tmp_last_stn = json_content['%s_%s'%(train_number,tmp_start_date.replace('-','_'))]['running_info'].has_key('last_stn')
+        except Exception as e:
+            tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, Railway servers look busy, please try after sometime.</body></html>' 
+            return tmp_msg
         if json_content.has_key('keys'):
             json_key = json_content['keys']
             train_start_date = json_key[0].replace('%s_'%train_number,'')
@@ -65,7 +72,10 @@ class TrainStatusController(BaseController):
                         ft = datetime.datetime.strptime(dept_time,'%Y-%m-%dT%H:%M:%S+05:30')
                         readable_time =  '%s:%s' % (ft.hour, ft.minute)
                         readable_date =  '%s-%s-%s' % (ft.day, ft.month, ft.year)
-                        tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Train(%s) is scheduled to start from %s at %s (%s)<br />Thanks to Railyatri.in</body></html>'%(txtweb_app_id, train_number, dept_name, readable_time, readable_date)
+                        if has_user_provided_date:
+                            tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Train(%s) is scheduled to start from %s at %s (%s)<br />Thanks to Railyatri.in</body></html>'%(txtweb_app_id, train_number, dept_name, readable_time, readable_date)
+                        else:
+                            tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Train(%s) is scheduled to start from %s at %s (%s)<br />For trains that did not start today, provide date of departure: @railstat %s %s<br />Thanks to Railyatri.in</body></html>'%(txtweb_app_id, train_number, dept_name, readable_time, readable_date, train_number, readable_date)
                         res_msg = '%s%s'%(res_msg,tmp_msg)
                         break
             else:
