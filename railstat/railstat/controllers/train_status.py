@@ -4,6 +4,7 @@ import urllib,urllib2
 import datetime,time
 import json
 import re
+from random import random
 
 from pylons import request, response, session, tmpl_context as c, url
 from pylons.controllers.util import abort, redirect
@@ -41,10 +42,11 @@ class TrainStatusController(BaseController):
         else:
             help_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Get latest update on your train running status. <br /> To use, SMS <txtWeb class="txtweb-number">@railstat &lt;train number&gt; &lt;train departure date in the format yyyy-mm-dd&gt;</txtWeb> <br />Eg: @railstat 12631 2012-06-25</body></html>'% txtweb_app_id
             return help_msg
-        main_page = urllib2.urlopen('http://trainenquiry.com',timeout=60)
+        '''main_page = urllib2.urlopen('http://trainenquiry.com',timeout=60)
         cookie_val = main_page.headers.get('Set-Cookie')
-        cookie_val = re.sub('.*?(ASP.*?;).*','\\1',cookie_val)
-        json_train_schedule = self._get_train_schedule(train_number,train_start_date,cookie_val)
+        print cookie_val
+        cookie_val = re.sub('.*?(ASP.*?;).*','\\1',cookie_val)'''
+        json_train_schedule = self._get_train_schedule(train_number,train_start_date)
         train_station_info = {}
         all_station_codes = ''
         for each_schedule in json_train_schedule:
@@ -52,13 +54,13 @@ class TrainStatusController(BaseController):
                 train_station_info[each_schedule['station_code']] = each_schedule
             all_station_codes = '%s,%s'%(all_station_codes,each_schedule['station_code'])
         all_station_codes = all_station_codes[1:]
-        json_content = self._get_train_location_info(train_number,train_start_date,all_station_codes,cookie_val)
+        json_content = self._get_train_location_info(train_number,train_start_date,all_station_codes)
         try:
             if 'keys' in json_content:
                 tmp_start_date = json_content['keys'][0].replace('%s_'%train_number, '')
             tmp_last_stn = json_content['%s_%s'%(train_number,tmp_start_date.replace('-','_'))]['running_info'].has_key('last_stn')
         except Exception as e:
-            tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, Railway servers look busy, please try after sometime.</body></html>' 
+            tmp_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry, Railway servers look busy, please try after sometime.</body></html>'
             return tmp_msg
         if json_content.has_key('keys'):
             json_key = json_content['keys']
@@ -160,43 +162,52 @@ class TrainStatusController(BaseController):
         res_msg = '%s%s'%(res_msg,tmp_msg)
         return res_msg
 
-    def _get_train_schedule(self,train_number,train_start_date,cookie_val):
+    def _get_train_schedule(self,train_number,train_start_date,cookie_val=''):
         '''
             Fetches Train Schedule by using train number and train departure date
         '''
-        cookie_val = cookie_val + ' __utma=177604064.1493553162.1371413536.1371413536.1371413536.1; __utmb=177604064.25.10.1371413536; __utmc=177604064; __utmz=177604064.1371413536.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __gads=ID=ead3b372002b189d:T=1371413537:S=ALNI_MbQm_aBLVkV4zQOopVCEk8iIc6qOQ; __utmv=177604064.|1=RunningStatus=(Yesterday)=1; OX_plg=qt|wmp|pm'
+        '''cookie_val = cookie_val + ' __utma=177604064.1493553162.1371413536.1371413536.1371413536.1; __utmb=177604064.25.10.1371413536; __utmc=177604064; __utmz=177604064.1371413536.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __gads=ID=ead3b372002b189d:T=1371413537:S=ALNI_MbQm_aBLVkV4zQOopVCEk8iIc6qOQ; __utmv=177604064.|1=RunningStatus=(Yesterday)=1; OX_plg=qt|wmp|pm'
         train_schedule_url = 'http://www.trainenquiry.com/RailYatri.ashx'
         payload_data = {}
         payload_data['RequestType'] = 'Schedule'
         payload_data['date_variable'] = train_start_date
         payload_data['train_number_variable']  = train_number
-        payload_data = urllib.urlencode(payload_data)
+        payload_data = urllib.urlencode(payload_data)'''
+        random_number1 = random().__str__()[2:]
+        random_number2 = random().__str__()[2:]
+        train_schedule_url = 'http://stage.railyatri.in/te/schedule/%s/%s.json?callback=jQuery%s&_=%s' % (train_number, train_start_date, random_number1, random_number2)
         sc_url_req = urllib2.Request(train_schedule_url)
-        sc_url_req.add_header('Cookie',cookie_val)
-        sc_url_req.add_header('Host','www.trainenquiry.com')
-        sc_url_req.add_header('Referer','http://trainenquiry.com/CurrentRunningTrain.aspx')
-        s = urllib2.urlopen(sc_url_req,payload_data,timeout=60)
+        #sc_url_req.add_header('Cookie',cookie_val)
+        #sc_url_req.add_header('Host','www.trainenquiry.com')
+        #sc_url_req.add_header('Referer','http://trainenquiry.com/CurrentRunningTrain.aspx')
+        s = urllib2.urlopen(sc_url_req,timeout=60)
         train_schedule = s.read()
-        json_train_schedule = json.loads(train_schedule)
+        #json_train_schedule = json.loads(train_schedule)
+        json_train_schedule = json.loads(train_schedule.replace('jQuery%s('%random_number1, '').replace(')',''))
         return json_train_schedule
 
-    def _get_train_location_info(self,train_number,train_start_date,all_station_codes,cookie_val):
+    def _get_train_location_info(self,train_number,train_start_date,all_station_codes,cookie_val=''):
         '''
             Fetches train location information which includes scheduled and actual departure,arrival times for each station
         '''
-        cookie_val = cookie_val + ' __utma=177604064.1493553162.1371413536.1371413536.1371413536.1; __utmb=177604064.25.10.1371413536; __utmc=177604064; __utmz=177604064.1371413536.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __gads=ID=ead3b372002b189d:T=1371413537:S=ALNI_MbQm_aBLVkV4zQOopVCEk8iIc6qOQ; __utmv=177604064.|1=RunningStatus=(Yesterday)=1; OX_plg=qt|wmp|pm'
+        '''cookie_val = cookie_val + ' __utma=177604064.1493553162.1371413536.1371413536.1371413536.1; __utmb=177604064.25.10.1371413536; __utmc=177604064; __utmz=177604064.1371413536.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __gads=ID=ead3b372002b189d:T=1371413537:S=ALNI_MbQm_aBLVkV4zQOopVCEk8iIc6qOQ; __utmv=177604064.|1=RunningStatus=(Yesterday)=1; OX_plg=qt|wmp|pm'
         train_schedule_url = 'http://www.trainenquiry.com/RailYatri.ashx'
         payload_data = {}
         payload_data['RequestType'] = 'Location'
         payload_data['codes'] = all_station_codes
         payload_data['s'] = train_start_date
         payload_data['t']  = train_number
-        payload_data = urllib.urlencode(payload_data)
+        payload_data = urllib.urlencode(payload_data)'''
+        random_number1 = random().__str__()[2:]
+        random_number2 = random().__str__()[2:]
+        train_schedule_url = 'http://coa-433841822.ap-southeast-1.elb.amazonaws.com/train/location-test.json?callback=jQuery%s_%s&t=%s&s=%s&codes=%s' % \
+                (random_number1, random_number2, train_number, train_start_date, all_station_codes)
         sc_url_req = urllib2.Request(train_schedule_url)
-        sc_url_req.add_header('Cookie',cookie_val)
-        sc_url_req.add_header('Host','www.trainenquiry.com')
-        sc_url_req.add_header('Referer','http://trainenquiry.com/TrainStatus.aspx')
-        s = urllib2.urlopen(sc_url_req,payload_data,timeout=60)
+        #sc_url_req.add_header('Cookie',cookie_val)
+        #sc_url_req.add_header('Host','www.trainenquiry.com')
+        #sc_url_req.add_header('Referer','http://trainenquiry.com/TrainStatus.aspx')
+        s = urllib2.urlopen(sc_url_req,timeout=60)
         status_content = s.read()
-        json_content = json.loads(status_content)
+        json_content = json.loads(status_content.replace('jQuery%s_%s('%(random_number1, random_number2), '').replace(')',''))
+        #json_content = json.loads(status_content)
         return json_content
