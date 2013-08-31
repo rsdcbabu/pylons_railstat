@@ -137,8 +137,12 @@ class TrainStatusController(BaseController):
                     break
         train_status = json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))]['status']
         if next_station_code != 'ENDOFTRIP' and delay_mins == '':
-            delay_mins = json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))]['delay_mins']
-            delay_mins = int(delay_mins)
+            delay_mins_json = json_content['%s_%s'%(train_number,train_start_date.replace('-','_'))]
+            if 'delay_mins' in delay_mins_json:
+                delay_mins = delay_mins_json['delay_mins']
+                delay_mins = int(delay_mins)
+            else:
+                delay_mins = 0
 
         ft = datetime.datetime.strptime(last_time,'%Y-%m-%dT%H:%M:%S+05:30')
         readable_time =  '%s:%s' % (ft.hour, ft.minute)
