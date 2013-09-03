@@ -179,11 +179,12 @@ class TrainStatusController(BaseController):
         payload_data = urllib.urlencode(payload_data)'''
         random_number1 = random().__str__()[2:]
         random_number2 = random().__str__()[2:]
-        train_schedule_url = 'http://stage.railyatri.in/te/schedule/%s/%s.json?callback=jQuery%s&_=%s' % (train_number, train_start_date, random_number1, random_number2)
+        train_schedule_url = 'http://mobile.trainenquiry.com/te/schedule/%s/%s.json?callback=jQuery%s&_=%s' % (train_number, train_start_date, random_number1, random_number2)
         sc_url_req = urllib2.Request(train_schedule_url)
         #sc_url_req.add_header('Cookie',cookie_val)
         #sc_url_req.add_header('Host','www.trainenquiry.com')
-        #sc_url_req.add_header('Referer','http://trainenquiry.com/CurrentRunningTrain.aspx')
+        #sc_url_req.add_header('Host','coa-433841822.ap-southeast-1.elb.amazonaws.com')
+        #sc_url_req.add_header('Referer','http://mobile.trainenquiry.com/train/runs_on/%s'%train_number)
         s = urllib2.urlopen(sc_url_req,timeout=60)
         train_schedule = s.read()
         #json_train_schedule = json.loads(train_schedule)
@@ -210,6 +211,8 @@ class TrainStatusController(BaseController):
         #sc_url_req.add_header('Cookie',cookie_val)
         #sc_url_req.add_header('Host','www.trainenquiry.com')
         #sc_url_req.add_header('Referer','http://trainenquiry.com/TrainStatus.aspx')
+        sc_url_req.add_header('Host','coa-433841822.ap-southeast-1.elb.amazonaws.com')
+        sc_url_req.add_header('Referer','http://mobile.trainenquiry.com/t/s/%s/%s?ref=start-days'%(train_number,train_start_date))
         s = urllib2.urlopen(sc_url_req,timeout=60)
         status_content = s.read()
         json_content = json.loads(status_content.replace('jQuery%s_%s('%(random_number1, random_number2), '').replace(')',''))
