@@ -27,6 +27,8 @@ class TrainStatusController(BaseController):
         res_msg = ''
         txtweb_app_id = config.get('txtweb_app_id')
         if request.params.has_key('txtweb-message') and request.params.get('txtweb-message').strip():
+            help_msg = '<html><head><meta name="txtweb-appkey" content="%s" /></head><body>Sorry. We are unable to give you the train status temporarily. Alternatively, use SPOT train feature on 139 to know live status of your train</body></html>'% txtweb_app_id
+            return help_msg
             txtweb_message = cgi.escape(request.params.get('txtweb-message'))
             has_user_provided_date = False
             if txtweb_message.__contains__(" "):
